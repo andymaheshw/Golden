@@ -10,8 +10,8 @@
 [build-badge]: https://img.shields.io/travis/dstroot/skeleton.svg?style=flat
 [build-url]: https://travis-ci.org/dstroot/skeleton
 
-[dependency-badge]: https://img.shields.io/david/dstroot/skeleton.svg?style=flat
-[dependency-url]: https://david-dm.org/dstroot/skeleton
+[dependency-badge]: https://david-dm.org/andymaheshw/golden.svg
+[dependency-url]: https://david-dm.org/andymaheshw/golden
 
 [dev-dep-badge]: https://img.shields.io/david/dev/dstroot/skeleton.svg?style=flat
 [dev-dep-url]: https://david-dm.org/dstroot/skeleton#info=devDependencies
