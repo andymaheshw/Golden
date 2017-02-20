@@ -233,8 +233,9 @@ if (app.get('env') === 'production' && config.logging) {
 // Security Settings
 app.disable('x-powered-by');          // Don't advertise our server type
 app.use(csrf());                      // Prevent Cross-Site Request Forgery
-/*app.use(helmet.ienoopen());           // X-Download-Options for IE8+
-app.use(helmet.nosniff());            // Sets X-Content-Type-Options to nosniff
+/*
+app.use(helmet.ieNoOpen());           // X-Download-Options for IE8+
+app.use(helmet.noSniff());            // Sets X-Content-Type-Options to nosniff
 app.use(helmet.xssFilter());          // sets the X-XSS-Protection header
 app.use(helmet.frameguard('deny'));   // Prevent iframe clickjacking
 */
