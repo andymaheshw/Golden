@@ -13,17 +13,15 @@
 [dependency-badge]: https://david-dm.org/andymaheshw/golden.svg
 [dependency-url]: https://david-dm.org/andymaheshw/golden
 
-[dev-dep-badge]: https://img.shields.io/david/dev/dstroot/skeleton.svg?style=flat
-[dev-dep-url]: https://david-dm.org/dstroot/skeleton#info=devDependencies
+[dev-dep-badge]: https://img.shields.io/david/dev/andymaheshw/golden.svg?style=flat
+[dev-dep-url]: https://david-dm.org/andymaheshw/golden#info=devDependencies
 
 [license-badge]: https://img.shields.io/badge/license-MIT-blue.svg?style=flat
 [license-url]: #license
 
-[release-badge]: https://img.shields.io/github/release/dstroot/skeleton.svg?style=flat
-[release-url]: https://github.com/dstroot/skeleton/releases
 
-[issues-badge]: https://img.shields.io/github/issues/dstroot/skeleton.svg?style=flat
-[issues-url]: https://github.com/dstroot/skeleton/issues
+[issues-badge]: https://img.shields.io/github/issues/andymaheshw/golden.svg?style=flat
+[issues-url]: https://github.com/andymaheshw/golden/issues
 
 #### Skeleton: A **complete framework** for building **Node.js** web applications.
 
