@@ -22,7 +22,7 @@ var debug             = require('debug')('skeleton');       // https://github.co
 var flash             = require('express-flash');           // https://npmjs.org/package/express-flash
 var config            = require('./config/config');         // Get configuration file
 var logger            = require('express-loggly');          // https://github.com/dstroot/express-loggly
-var helmet            = require('helmet');                  // https://github.com/evilpacket/helmet
+//var helmet            = require('helmet');                  // https://github.com/evilpacket/helmet
 var semver            = require('semver');                  // https://npmjs.org/package/semver
 var enforce           = require('express-sslify');          // https://github.com/florianheinemann/express-sslify
 var mongoose          = require('mongoose');                // https://npmjs.org/package/mongoose
@@ -41,8 +41,8 @@ var io     = require('socket.io')(server);
 /**
  * Configure Mongo Database
  */
-
-mongoose.connect(config.mongodb.url);
+mongoose.Promise = global.Promise;
+mongoose.connect(process.env.MONGODB_URI);
 var db = mongoose.connection;
 
 // Use Mongo for session store
@@ -93,7 +93,7 @@ if (app.get('env') === 'development') {
   // Turn off caching in development
   // This sets the Cache-Control HTTP header to no-store, no-cache,
   // which tells browsers not to cache anything.
-  app.use(helmet.nocache());
+  //app.use(helmet.nocache());
 }
 
 if (app.get('env') === 'production') {
@@ -233,11 +233,11 @@ if (app.get('env') === 'production' && config.logging) {
 // Security Settings
 app.disable('x-powered-by');          // Don't advertise our server type
 app.use(csrf());                      // Prevent Cross-Site Request Forgery
-app.use(helmet.ienoopen());           // X-Download-Options for IE8+
+/*app.use(helmet.ienoopen());           // X-Download-Options for IE8+
 app.use(helmet.nosniff());            // Sets X-Content-Type-Options to nosniff
 app.use(helmet.xssFilter());          // sets the X-XSS-Protection header
 app.use(helmet.frameguard('deny'));   // Prevent iframe clickjacking
-
+*/
 // Content Security Policy:
 //   http://content-security-policy.com/
 //   http://www.html5rocks.com/en/tutorials/security/content-security-policy/
@@ -247,7 +247,7 @@ app.use(helmet.frameguard('deny'));   // Prevent iframe clickjacking
 //   IT'S JUST PAINFUL OTHERWISE! OR DON'T
 //   EVEN USE IT AT ALL - I JUST WANTED TO
 //   LEARN HOW IT WORKS. :)
-
+/*
 app.use(helmet.contentSecurityPolicy({
   defaultSrc: [
     "'self'",
@@ -341,6 +341,7 @@ app.use(helmet.contentSecurityPolicy({
   disableAndroid: false, // set to true if you want to disable Android (browsers can vary and be buggy)
   safari5: false         // set to true if you want to force buggy CSP in Safari 5
 }));
+*/
 
 // Passport OAUTH Middleware
 app.use(passport.initialize());
@@ -488,7 +489,7 @@ db.on('open', function () {
     if (!semver.satisfies(process.versions.node, config.engine)) {
       debug('Error: unsupported version of Node or io.js!'.red.bold);
       debug(config.name.red.bold + ' needs Node or io.js version '.red.bold + config.engine.red.bold);
-      process.exit(0);
+      //process.exit(0);
     }
 
     // Log how we are running
@@ -502,7 +503,7 @@ db.on('open', function () {
       console.log('\n');
       debug('has ' + 'shutdown'.green.bold);
       debug('was running for ' + Math.round(process.uptime()).toString().green.bold + ' seconds.');
-      process.exit(0);
+     // process.exit(0);
     });
   });
 });
@@ -538,3 +539,4 @@ io.on('connection', function (socket) {
     });
   });
 });
+//app.listen(3000);

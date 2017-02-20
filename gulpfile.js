@@ -14,6 +14,7 @@ var gulp          = require('gulp');
 var pngquant      = require('imagemin-pngquant');
 var terminus      = require('terminus');
 var runSequence   = require('run-sequence');
+var csslint       = require('gulp-csslint');
 
 /**
  * Banner
@@ -104,7 +105,7 @@ gulp.task('styles', function () {
     }))
     .pipe($.csscomb())                      // Coding style formatter for CSS
     .pipe($.csslint('.csslintrc'))          // Lint CSS
-    .pipe($.csslint.reporter())             // Report issues
+    //.pipe($.csslint.reporter())             // Report issues
     .pipe($.rename({ suffix: '.min' }))     // Add .min suffix
     .pipe($.csso())                         // Minify CSS
     .pipe($.header(banner, { pkg : pkg }))  // Add banner
